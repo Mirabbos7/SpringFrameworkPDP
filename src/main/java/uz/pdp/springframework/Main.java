@@ -1,2 +1,4 @@
-package uz.pdp.springframework;public class Main {
+package uz.pdp.springframework;
+
+public class Main {
 }
