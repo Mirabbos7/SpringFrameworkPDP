@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Config {
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "destroy")
     public MyBean myBean(){
         return new MyBean();
     }
@@ -13,5 +13,16 @@ public class Config {
     @Bean
     public MyBean2 myBean2(MyBean myBean){
         return new MyBean2(myBean);
+    }
+
+    @Bean
+    public UserService userService(){
+        return new UserService();
+    }
+
+
+    @Bean
+    public AdminService adminService(){
+        return new AdminService();
     }
 }
