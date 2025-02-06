@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd">
+
+    <bean class="uz.pdp.springframework.MyBean" id="myBean">
+
+    </bean>
+    <bean class="uz.pdp.springframework.MyBean2" id="myBean2">
+        <constructor-arg name="myBean" ref="myBean">
+
+        </constructor-arg>
+    </bean>
+<!--    <bean class="uz.pdp.springframework.Person" id="person">-->
+<!--        <constructor-arg name="fullName" value="Mirabbos Axmedov"/>-->
+<!--    </bean>-->
+
+    <bean class="uz.pdp.springframework.Person" id="person" factory-method="getInstance">
+        <property name="fullName" value="Mirabbos Axmedov">
+        </property>
+
+    </bean>
+</beans>
