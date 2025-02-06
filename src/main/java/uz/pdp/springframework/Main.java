@@ -9,5 +9,7 @@ public class Main {
         Person person = (Person) context.getBean("person");
         System.out.println(myBean);
         System.out.println(person);
+        System.out.println(context.getBean(BaseDAO.class));
+        context.close();
     }
 }

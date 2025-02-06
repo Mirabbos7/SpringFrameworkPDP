@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:application.properties"/>
     <bean class="uz.pdp.springframework.MyBean" id="myBean">
 
     </bean>
@@ -15,9 +17,31 @@
 <!--        <constructor-arg name="fullName" value="Mirabbos Axmedov"/>-->
 <!--    </bean>-->
 
-    <bean class="uz.pdp.springframework.Person" id="person" factory-method="getInstance">
+    <bean class="uz.pdp.springframework.Person" id="person" factory-method="getInstance"
+    init-method="init" destroy-method="destroy">
         <property name="fullName" value="Mirabbos Axmedov">
         </property>
+    <property name="nickNames">
+        <list>
+            <value>Mirka</value>
+            <value>Mira</value>
+        </list>
+        </property>
 
+        <property name="names">
+            <map>
+                <entry key="1" value="Mirka"></entry>
+                <entry key="2" value="Mira"></entry>
+            </map>
+        </property>
+
+    </bean>
+    <bean id="baseDao" class="uz.pdp.springframework.BaseDAO">
+        <constructor-arg name="url" value="${spring.datasource.url}"/>
+        <constructor-arg name="user" value="${spring.datasource.user}"/>
+        <constructor-arg name="password" value="${spring.datasource.password}"/>
+        <constructor-arg name="database" value="${spring.datasource.database}"/>
+        <constructor-arg name="schema" value="${spring.datasource.schema}"/>
+        <constructor-arg name="driver" value="${spring.datasource.driver}"/>
     </bean>
 </beans>
