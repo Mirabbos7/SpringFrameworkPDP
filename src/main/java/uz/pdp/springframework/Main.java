@@ -8,6 +8,8 @@ public class Main {
         AnnotationConfigApplicationContext container = new AnnotationConfigApplicationContext(MyConfig.class);
         MyBean2 myBean = container.getBean(MyBean2.class);
         myBean.hi();
+        HomeController bean = container.getBean(HomeController.class);
+        System.out.println(bean);
 
     }
 }
