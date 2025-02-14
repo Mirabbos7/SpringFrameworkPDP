@@ -1,8 +1,21 @@
 package uz.pdp.springframework;
 
-public class Performance {
+import java.util.Random;
 
+public class Performance {
     public void perform(){
-        System.out.println("Performing...");
+        // turn off phones
+        // take a seat
+        Random random = new Random();
+
+        if (random.nextBoolean()) {
+            System.out.println("performing well..");
+        }else
+            throw new RuntimeException("Performed Bad");
+        /*
+         *  clap clap /// applause
+         *  complaining about a action
+         * */
     }
+
 }
